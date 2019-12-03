@@ -1,0 +1,82 @@
+<h3>Edit Order</h3>
+<br>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item"> <a href="placeorder" class="nav-link" routerLinkActive="active">Place Order</a></li>
+    <li class="nav-item"> <a href="orderlist" class="nav-link" routerLinkActive="active">Order List</a></li>
+    <li class="nav-item">
+      <button class="btn btn-success navbar-btn " (click)=logout() type="submit">Logout</button>
+    </li>
+  </ul>
+</nav>
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="purchaseForm" novalidate (ngSubmit)="updateOrder()">
+      <div class="form-group">
+        <input type="hidden" class="form-control" formControlName="purchaseId" #purchaseId
+          [(ngModel)]="purchase.purchaseId" />
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Order No</label>
+        <input type="text" class="form-control" value="{{ purchase.purchaseOrderNo }}" formControlName="purchaseOrderNo"
+          #purchaseOrderNo [(ngModel)]="purchase.purchaseOrderNo" readonly="true" />
+      </div>
+
+      <br>
+      <div class="form-group">
+        <label class="col-md-4">AssetName</label>
+        <input type="text" class="form-control" value="{{ purchase.assetName }}"
+          formControlName="assetName" #purchaseAssetName [(ngModel)]="purchase.purchaseAssetName" readonly="true"/>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label class="col-md-4">AssetType</label>
+        <input type="text" class="form-control" value="{{ purchase.assetType }}"
+          formControlName="assetType" #purchaseAssetType [(ngModel)]="purchase.purchaseAssetType" readonly="true" />
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label class="col-md-4">Quantity</label>
+        <input type="text" class="form-control" value="{{ purchase.quantity }}" formControlName="quantity" #quantity
+          [(ngModel)]="purchase.quantity" readonly="true" />
+      </div>
+
+      <br>
+
+      <div class="form-group">
+        <label class="col-md-4">Vendor Name</label>
+        <input type="text" class="form-control" value="{{ purchase.vendorName }}"
+          formControlName="vendorName" #purchaseVendorName [(ngModel)]="purchase.purchaseVendorName"  readonly="true"/>
+      </div>
+      <br>
+      <div class="form-group">
+        <label class="col-md-4">Purchased Date</label>
+        <input type="date" class="form-control" value="{{ purchase.purchaseDateStr }}" formControlName="purchaseDateStr"
+          #purchaseDateStr [(ngModel)]="purchase.purchaseDateStr" readonly="true" />
+      </div>
+      <br>
+      <div class="form-group">
+        <label class="col-md-4">Delivery Date </label>
+        <input type="date" class="form-control" value="{{ purchase.purchaseDelivDateStr}}"
+          formControlName="purchaseDelivDateStr" #purchaseDelivDate [(ngModel)]="purchase.purchaseDelivDate" />
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label class="col-md-4">Status </label>
+        <input type="text" class="form-control" value="{{ purchase.purchaseStatus }}" formControlName="purchaseStatus"
+          #purchaseStatus [(ngModel)]="purchase.purchaseStatus"  />
+      </div>
+      <br>
+
+      <button class="btn btn-primary" [disabled]="purchaseForm.pristine || purchaseForm.invalid">
+        Update
+      </button>
+    </form>
+  </div>
+
+</div>
